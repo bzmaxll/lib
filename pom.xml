@@ -80,7 +80,7 @@
 		<dependency>
 			<groupId>com.hisupplier</groupId>
 			<artifactId>hisupplier-commons-en</artifactId>
-			<version>3.0-20150430</version>
+			 <version>3.0-20150525</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -148,7 +148,7 @@
 			<dependency>
 				<groupId>com.hisupplier</groupId>
 				<artifactId>hisupplier-api-webservice</artifactId>
-				<version>1.0.0-20141209</version>
+				<version>1.0.0-20150528</version>
 			</dependency>
 			<dependency>
 				<groupId>com.hisupplier</groupId>
