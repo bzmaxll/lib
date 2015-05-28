@@ -6,7 +6,7 @@
 	<artifactId>lib</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
+
 	<build>
 		<plugins>
 			<!-- 指定jdk -->
@@ -19,7 +19,7 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			
+
 			<!-- 使用packageFilter下的文件替换配置文件 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -44,6 +44,19 @@
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
 			<url>http://192.168.1.250:8081/nexus/content/groups/public</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>maven</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>http://repo1.maven.org/maven2</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
@@ -53,6 +66,7 @@
 			<url>http://192.168.1.250:8081/nexus/content/groups/public</url>
 		</pluginRepository>
 	</pluginRepositories>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -80,7 +94,7 @@
 		<dependency>
 			<groupId>com.hisupplier</groupId>
 			<artifactId>hisupplier-commons-en</artifactId>
-			 <version>3.0-20150525</version>
+			<version>3.0-20150525</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
