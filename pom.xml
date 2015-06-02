@@ -17,6 +17,7 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+					<encoding>GBK</encoding>
 				</configuration>
 			</plugin>
 
@@ -69,7 +70,7 @@
 
 
 	<properties>
-		<project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<!-- 公用的包 -->
