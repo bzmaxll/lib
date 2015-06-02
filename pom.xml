@@ -18,7 +18,9 @@
 					<source>1.6</source>
 					<target>1.6</target>
 					<encoding>GBK</encoding>
-					<includes>**/*.xml</includes>
+					<includes>
+						<ininclude>**/*.xml</ininclude>
+					</includes>
 				</configuration>
 			</plugin>
 
