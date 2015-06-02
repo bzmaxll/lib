@@ -19,15 +19,6 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			
-			<!-- 指定编译语言 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<encoding>GBK</encoding>
-				</configuration>
-			</plugin>
 
 			<!-- 使用packageFilter下的文件替换配置文件 -->
 			<plugin>
@@ -78,7 +69,7 @@
 
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>GBK</project.build.sourceEncoding>
 	</properties>
 
 	<!-- 公用的包 -->
