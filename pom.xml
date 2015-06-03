@@ -37,6 +37,11 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+		</resources>
 	</build>
 
 	<!-- 私服，将中央库没有的包放在这里 -->
