@@ -46,7 +46,6 @@
 			<resource>
 				<directory>src/main/packageFilter</directory>
 				<filtering>true</filtering>
-				<targetPath>WEB-INF/classes</targetPath>
 			</resource>
 		</resources>
 	</build>
