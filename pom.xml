@@ -20,16 +20,30 @@
 					<encoding>GBK</encoding>
 				</configuration>
 			</plugin>
-
-			<!-- 使用packageFilter下的文件替换配置文件 -->
+			
+			<!-- 打包 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.0.2</version>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4.1</version>
 				<configuration>
-					<warName>hisupplier-${project.artifactId}-${project.version}-${maven.build.timestamp}</warName>
-					<warSourceExcludes>WEB-INF/work/**</warSourceExcludes>
+					<!-- 包名 -->
+					<finalName>hisupplier-${project.artifactId}-${project.version}-${maven.build.timestamp}</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
+					<!-- 配置文件 -->
+					<descriptors>
+						<descriptor>../lib/assembly.xml</descriptor>
+					</descriptors>
 				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal><!-- 执行一次 -->
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<!-- 编译时 包含的资源文件路径 -->
