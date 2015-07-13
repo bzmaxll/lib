@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-support" basedir=".">
+	<tstamp />
+
+	<path id="classpath">
+		<fileset dir="${lib}" includes="**/*.jar" />
+	</path>
+
+	<target name="ant-clean">
+		<delete dir="${build.class}" />
+	</target>
+
+	<target name="init" depends="ant-clean">
+		<mkdir dir="${dist}" />
+		<mkdir dir="${build.class}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src}"
+		       destdir="${build.class}"
+		       includeAntRuntime="false"
+		       debug="${javac.debug}"
+		       optimize="${javac.optimize}"
+		       deprecation="${javac.deprecation}"
+			   encoding="gbk"
+		       nowarn="${javac.nowarn}"
+		       source="${javac.source}"
+		       target="${javac.target}">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="ant-javadoc" depends="init">
+		<delete dir="${doc}/v${version}" />
+		<mkdir dir="${doc}/v${version}" />
+		<javadoc destdir="${doc}/v${version}">
+			<packageset dir="${src}">
+				<include name="**" />
+			</packageset>
+			<classpath refid="classpath" />
+		</javadoc>
+	</target>
+
+	<target name="ant-jar" depends="compile">
+		<copy todir="${build.class}">
+			<fileset dir="${src}">
+				<include name="**/*.xml" />
+				<include name="**/*.html" />
+				<include name="**/*.ftl" />
+				<include name="**/*.properties" />
+				<include name="**/*.dat" />
+				<exclude name="log4j.xml" />
+			</fileset>
+		</copy>
+		<jar destfile="${dist}/${project}-${version}-${DSTAMP}.jar" basedir="${build.class}">
+			<manifest>
+				<attribute name="Created-By" value="${user.name}" />
+				<attribute name="Build-Jdk" value="${java.version}" />
+				<attribute name="Specification-Version" value="" />
+				<attribute name="Specification-Vendor" value="${spec.vendor}" />
+				<attribute name="Specification-Title" value="${project}" />
+				<attribute name="Implementation-Version" value="${version}" />
+				<attribute name="Implementation-Vendor" value="${impl.vendor}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<!--
+		测试，用于在测试机器环境中编译java源文件到目录/WebRoot/WEB-INF/classes
+	-->
+	<target name="ant-test" depends="compile">
+		<delete dir="WebRoot/WEB-INF/classes" />
+		
+		<!-- 拷贝到class文件 -->
+		<copy todir="WebRoot/WEB-INF/classes">
+			<fileset dir="build/classes" />
+			<fileset dir="src">
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.properties" />
+			</fileset>
+			<fileset dir="config">
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.properties" />
+				<include name="**/*.txt" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="dist" depends="compile">
+
+		<!-- 拷贝WebRoot下jsp,css,img等文件 -->
+		<copy todir="${dist.web}">
+			<fileset dir="./WebRoot">
+				<exclude name="css-cnOld/**" />
+				<exclude name="**/*.db" />
+				<exclude name="**/.svn/**" />
+				<exclude name="html/**" />
+				<exclude name="demo/**" />
+				<exclude name="var/**" />
+				<exclude name="WEB-INF/**" />
+			</fileset>
+			<fileset dir="./dist/google" />
+		</copy>
+
+		<!-- 拷贝WebRoot/WEB-INF下的所有xml配置文件 -->
+		<copy todir="${dist.web}/WEB-INF">
+			<fileset dir="./WebRoot/WEB-INF" includes="*.xml" />
+			<fileset dir="./WebRoot/WEB-INF" includes="Gb2Big5.tld" />
+			<fileset dir="./WebRoot/WEB-INF" includes="*.properties">				
+				<exclude name="wro.properties" />	
+			</fileset>
+			<fileset dir="./dist">
+				<include name="wro.properties" />
+			</fileset>
+		</copy>
+
+		<!-- 拷贝WebRoot/WEB-INF/lib下的jar包 -->
+		<copy todir="${dist.web.lib}">
+			<fileset dir="./WebRoot/WEB-INF/lib">
+				<include name="**/*.jar" />
+				<include name="**/*.tld" />
+			</fileset>
+		</copy>
+
+		<!-- 拷贝class文件 -->
+		<copy todir="${dist.web.class}" overwrite="true">
+			<fileset dir="${build.class}" />
+			<fileset dir="src">
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.properties" />
+				<include name="**/*.dat" />
+				<exclude name="app.properties" />
+				<exclude name="log4j.xml" />
+				<exclude name="struts.xml" />
+				<exclude name="sql_map_config.xml" />
+			</fileset>
+			<fileset dir="config">
+				<include name="**/*.xml" />
+				<include name="**/*.ftl" />
+				<include name="**/*.dic" />
+				<include name="**/*.properties" />
+				<include name="**/*.txt" />
+				<exclude name="app.properties" />
+				<exclude name="log4j.xml" />
+				<exclude name="struts.xml" />
+				<exclude name="sql_map_config.xml" />
+				<exclude name="sql_map_config_cn.xml" />
+				<exclude name="sql_map_config_write.xml" />
+				<exclude name="applicationContext_db.xml" />
+			</fileset>
+			<fileset dir="dist">
+				<include name="log4j.xml" />
+				<include name="struts.xml" />
+				<include name="sql_map_config.xml" />
+				<include name="sql_map_config_cn.xml" />
+				<include name="sql_map_config_write.xml" />
+				<include name="applicationContext_db.xml" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="zip" depends="dist" description="打包.zip">
+
+		<mkdir dir="${dist}/tmp/${project}" />
+		<copy todir="${dist}/tmp/${project}">
+			<fileset dir="${dist.web}" />
+		</copy>
+		<delete>
+			<fileset dir="${dist}">
+				<include name="${project}-${version}-${DSTAMP}.zip" />
+			</fileset>
+		</delete>
+		<zip destfile="${dist}/${project}-${version}-${DSTAMP}.zip">
+			<zipfileset dir="${dist}/tmp">
+				<include name="**" />
+			</zipfileset>
+		</zip>
+		<delete dir="${dist}/tmp" />
+		<delete dir="${dist.web}" />
+	</target>
+
+	<target name="encode-resources-zh">
+		<native2ascii encoding="utf-8" src="./src" dest="./src" ext=".properties">
+			<include name="**/*.bak" />
+			<include name="**/*.txt" />
+		</native2ascii>
+		<native2ascii encoding="utf-8" src="./config" dest="./config" ext=".properties">
+			<include name="**/*.bak" />
+			<include name="**/*.txt" />
+		</native2ascii>
+	</target>
+
+</project>
