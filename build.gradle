@@ -20,7 +20,7 @@ sourceSets {
 ext {
 	aboutVersion = '1.0.0-20140922'
 	mayaVersion = '1.1.0-20140416'	// 需要soap包
-	hiCommonsVersion = '3.0-20150708'
+	hiCommonsVersion = '3.0-20150714'
 	hiAccountVersion = '3.5.1-20150624'
 	hiSearchVersion = '1.0.0-20150204'
 	hiApiVersion = '1.0.0-20150528'
@@ -50,6 +50,10 @@ ext {
 	pinyinVersion = '2.5.0'			// 汉字的拼音
 	ehcacheVersion = '2.7.8'
 	antVersion = '1.6.5'			// 文件zip压缩时 用到
+	sitemeshVersion = '2.4.2'		// 不用struts插件，单独存在
+	freemarkerVersion = '2.3.19'	// 不用struts插件，单独存在
+	cglibVersion = '3.1'			// 如果设置proxy-target-class="true"，spring需要
+	aspectjweaverVersion = '1.8.6'	// spring需要
 }
 
 repositories {
@@ -78,7 +82,11 @@ dependencies {
 	// compile fileTree(dir: 'WebRoot/WEB-INF/lib', include: '*.jar')
 }
 
-task copyDependencies(type: Copy) {
+task cleanDependencies << {
+	file("WebRoot/WEB-INF/lib/").deleteDir()
+}
+
+task copyDependencies(type: Copy, dependsOn: cleanDependencies) {
    from configurations.compile
    into 'WebRoot/WEB-INF/lib'
    exclude('jsdk*.jar','tools*.jar','mysql-connector*.jar','javamail*.jar') // ,'commons-dbcp*.jar','commons-pool*.jar' 本地测试需要使用
