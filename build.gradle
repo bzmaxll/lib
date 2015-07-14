@@ -18,12 +18,14 @@ sourceSets {
 
 // 版本参数
 ext {
+	aboutVersion = '1.0.0-20140922'
 	hiCommonsVersion = '3.0-20150708'
 	hiAccountVersion = '3.5.1-20150624'
 	hiSearchVersion = '1.0.0-20150204'
 	hiApiVersion = '1.0.0-20150528'
 	hiCasVersion = '3.2-20120319'
 	hiTaskVersion = '1.2.0-20141118'
+	hiSmsVersion = '1.0.0-20140212'
 	
 	strutsVersion = '2.3.20.1'
 	springVersion = '3.0.5.RELEASE'
@@ -37,10 +39,18 @@ ext {
 	luceneVersion = '3.5.0'
 	patchcaVersion = '0.5.0'
 	backportVersion = '3.0'
+	jfreeVersion = '1.0.9'
+	qrcodeVersion = '3.0'
+	jxlVersion = '2.6.12'
+	poiVersion = '3.6-20091214'		// jxl增强
+	jsonVersion = '2.2.2'			// json对象、java对象互转
+	soapVersion = '2.3.1'
+	httpVersion = '4.3.2'			// 模拟http提交
 }
 
 repositories {
 	maven { url 'http://192.168.1.250:8081/nexus/content/groups/public' }
+	maven { url 'http://maven.springframework.org/release' }
 //	maven { url 'http://maven.oschina.net/content/groups/public/' }
     mavenCentral()
 }
@@ -66,4 +76,5 @@ dependencies {
 task copyDependencies(type: Copy) {
    from configurations.compile
    into 'WebRoot/WEB-INF/lib'
+   exclude('jsdk*.jar','tools*.jar','mysql-connector*.jar','commons-dbcp*.jar','commons-pool*.jar')
 }
