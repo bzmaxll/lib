@@ -49,6 +49,7 @@ ext {
 	httpVersion = '4.3.2'			// 模拟http提交
 	pinyinVersion = '2.5.0'			// 汉字的拼音
 	ehcacheVersion = '2.7.8'
+	antVersion = '1.6.5'			// 文件zip压缩时 用到
 }
 
 repositories {
