@@ -76,5 +76,5 @@ dependencies {
 task copyDependencies(type: Copy) {
    from configurations.compile
    into 'WebRoot/WEB-INF/lib'
-   exclude('jsdk*.jar','tools*.jar','mysql-connector*.jar','commons-dbcp*.jar','commons-pool*.jar')
+   exclude('jsdk*.jar','tools*.jar','mysql-connector*.jar') // ,'commons-dbcp*.jar','commons-pool*.jar' 本地测试需要使用
 }
