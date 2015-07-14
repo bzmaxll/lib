@@ -82,8 +82,12 @@ dependencies {
 	// compile fileTree(dir: 'WebRoot/WEB-INF/lib', include: '*.jar')
 }
 
+// 删除lib下的所有jar包
 task cleanDependencies << {
-	file("WebRoot/WEB-INF/lib/").deleteDir()
+	FileTree tree = fileTree(dir: 'WebRoot/WEB-INF/lib')  
+	tree.include '*.jar' 
+
+	tree.each { it.delete() }  
 }
 
 task copyDependencies(type: Copy, dependsOn: cleanDependencies) {
