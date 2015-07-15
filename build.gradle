@@ -26,11 +26,11 @@ ext {
 	hiAccountVersion = '3.5.1-20150624'
 	hiSearchVersion = '1.0.0-20150204'
 	hiApiVersion = '1.0.0-20150528'
-	hiCasVersion = '3.2-20120319'
+	hiCasVersion = '3.2-20120329'
 	hiTaskVersion = '1.2.0-20141118'
 	hiSmsVersion = '1.0.0-20140212'
 	
-	strutsVersion = '2.3.20.1'
+	strutsVersion = '2.3.15.1'   	// '2.3.20.1' ongl不支持静态方法
 	springVersion = '3.0.5.RELEASE'
 	ibatisVersion = '2.3.4.726'
 	velocityVersion = '1.5'
@@ -56,6 +56,7 @@ ext {
 	freemarkerVersion = '2.3.19'	// 不用struts插件，单独存在
 	cglibVersion = '3.1'			// 如果设置proxy-target-class="true"，spring需要
 	aspectjweaverVersion = '1.8.6'	// spring需要
+	jstlVersion = '1.2'
 }
 
 repositories {
