@@ -121,7 +121,7 @@
 		<dependency>
 			<groupId>com.hisupplier</groupId>
 			<artifactId>hisupplier-commons-en</artifactId>
-			<version>3.0-20150620</version>
+			<version>3.0-20150730</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
