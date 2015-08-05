@@ -95,3 +95,11 @@ task copyDependencies(type: Copy, dependsOn: cleanDependencies) {
    from configurations.compile - configurations.providedCompile
    into libPath
 }
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
