@@ -96,6 +96,8 @@ uploadArchives {
     }
 }
 
+[compileJava, compileTestJava]*.options*.encoding = 'GBK'
+
 task real(type: Copy) {
     from "src/main/real"
     into "$buildDir/resources/main"
