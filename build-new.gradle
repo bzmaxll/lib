@@ -114,5 +114,4 @@ war{
 	baseName = "hisupplier"
 	classifier = new Date().format("yyyyMMdd")
 	extension = "zip"
-	into "hisupplier-wap"
 }
