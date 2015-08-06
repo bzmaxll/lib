@@ -17,7 +17,7 @@ ext {
 	hiCommonsVersion = '3.0-20150805'
 	hiAccountVersion = '3.5.1-20150624'
 	hiSearchVersion = '1.0.0-20150204'
-	hiApiVersion = '1.0.0-20150805'
+	hiApiVersion = '1.0.0-20150806'
 	hiCasVersion = '3.2-20120329'
 	hiTaskVersion = '1.2.0-20141118'
 	hiSmsVersion = '1.0.0-20140212'
@@ -51,6 +51,8 @@ ext {
 	jstlVersion = '1.2'
 	
 	quartzVersion = '1.5.2'
+	dnsjavaVersion = '2.0.6'
+	commonsnetVersion = '3.3'
 }
 
 repositories {
