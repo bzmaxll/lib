@@ -101,13 +101,21 @@ uploadArchives {
     }
 }
 
+// 指定java文件的编码
 [compileJava, compileTestJava]*.options*.encoding = 'GBK'
 
+// java下的资源文件
+processResources {
+	from "src/main/java"
+	exclude '**/*.java'
+}
+
+// 网上的配置文件
 task real(type: Copy) {
     from "src/main/real"
     into sourceSets.main.output.resourcesDir
 }
-
+			
 war{
 	dependsOn real
 	
