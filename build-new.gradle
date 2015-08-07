@@ -119,6 +119,8 @@ task real(type: Copy) {
 war{
 	dependsOn real
 	
+	exclude 'WEB-INF/tmp/','WEB-INF/work/'
+	
 	baseName = "hisupplier"
 	classifier = new Date().format("yyyyMMdd")
 	extension = "zip"
