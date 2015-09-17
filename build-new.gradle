@@ -19,7 +19,7 @@ ext {
 	hiSearchVersion = '1.0.0-20150204'
 	hiApiVersion = '1.0.0-20150806'
 	hiCasVersion = '3.2-20120329'
-	hiTaskVersion = '1.0.0-20150812'
+	hiTaskVersion = '1.0.0-20150917'
 	hiSmsVersion = '1.0.0-20140212'
 	
 	strutsVersion = '2.3.15.1'   	// '2.3.20.1' ongl不支持静态方法
