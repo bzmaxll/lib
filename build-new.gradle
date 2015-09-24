@@ -24,6 +24,7 @@ ext {
 	
 	strutsVersion = '2.3.15.1'   	// '2.3.20.1' ongl不支持静态方法
 	springVersion = '3.0.5.RELEASE'
+	spring4Version = '4.0.1.RELEASE'
 	ibatisVersion = '2.3.4.726'
 	velocityVersion = '1.7'
 	urlrewriteVersion = '4.0.4'
@@ -53,6 +54,9 @@ ext {
 	quartzVersion = '1.5.2'
 	dnsjavaVersion = '2.0.6'
 	commonsnetVersion = '3.3'
+	
+	jstlVersion = '1.2'
+	tilesVersion = '3.0.3'
 }
 
 repositories {
