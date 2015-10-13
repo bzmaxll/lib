@@ -1,9 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'war'
+apply plugin: 'maven-publish' 
 
 sourceCompatibility = 1.6
-version = '1.0.0'
+version = '1.0.0-'.concat(new Date().format("yyyyMMdd"))
 buildDir = 'target'
+group = "com.hisupplier" 
 
 sourceSets.main.output.classesDir = file("$buildDir/classes")
 sourceSets.main.output.resourcesDir = file("$buildDir/classes")
@@ -97,13 +99,9 @@ task copyDependencies(type: Copy, dependsOn: cleanDependencies) {
    into libPath
 }
 
-// 发布 JAR 文件
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
+// 源文件打包
+task sourceJar(type: Jar) { 
+    from sourceSets.main.allJava 
 }
 
 // 指定java文件的编码
@@ -127,6 +125,5 @@ war{
 	exclude 'WEB-INF/tmp/','WEB-INF/work/'
 	
 	baseName = "hisupplier"
-	classifier = new Date().format("yyyyMMdd")
 	extension = "zip"
 }
