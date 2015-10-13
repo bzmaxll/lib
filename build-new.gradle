@@ -14,10 +14,10 @@ ext {
 
 	aboutVersion = '1.0.0-20140922'
 	mayaVersion = '1.1.0-20140416'	// 需要soap包
-	hiCommonsVersion = '3.0-20150926'
+	hiCommonsVersion = '3.0-20151013'
 	hiAccountVersion = '1.0.0-20150918'
 	hiSearchVersion = '1.0.0-20150204'
-	hiApiVersion = '1.0.0-20150918'
+	hiApiVersion = '1.0.0-20151015'
 	hiCasVersion = '3.2-20120329'
 	hiTaskVersion = '1.0.0-20150917'
 	hiSmsVersion = '1.0.0-20140212'

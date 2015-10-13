@@ -211,7 +211,7 @@
 			<dependency>
 				<groupId>com.hisupplier</groupId>
 				<artifactId>hisupplier-api-webservice</artifactId>
-				<version>1.0.0-20150528</version>
+				<version>1.0.0-20151012</version>
 			</dependency>
 			<dependency>
 				<groupId>com.hisupplier</groupId>
