@@ -59,6 +59,8 @@ ext {
 	
 	jstlVersion = '1.2'
 	tilesVersion = '3.0.3'
+	
+	jacksonVersion = '1.9.13'
 }
 
 repositories {
