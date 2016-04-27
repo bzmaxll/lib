@@ -16,7 +16,7 @@ ext {
 
 	aboutVersion = '1.0.0-20140922'
 	mayaVersion = '1.1.0-20140416'	// 需要soap包
-	hiCommonsVersion = '3.0-20151123'
+	hiCommonsVersion = '3.0-20160426'
 	hiAccountVersion = '1.0.11-20160217'
 	hiSearchVersion = '1.0.0-20160310'
 	hiApiVersion = '1.0.0-20151013'
